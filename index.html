@@ -45,7 +45,20 @@
 			var edges2 = new THREE.EdgesGeometry( geometry2 );
 			var box = new THREE.LineSegments( edges2, new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) ); // random color
 			scene.add( box );
+
+
+			var geometry3 = new THREE.CylinderBufferGeometry( 1, 1, 4, 6 );
+			var edges3 = new THREE.EdgesGeometry( geometry3 );
+			var cylinder = new THREE.LineSegments( edges3,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );
 		
+			scene.add( cylinder );
+
+
+			var geometry4 = new THREE.SphereGeometry( 1, 32, 22 );
+			var edges4 = new THREE.EdgesGeometry( geometry4 );
+			var sphere = new THREE.LineSegments( edges4,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );
+			scene.add( sphere );
+					
 			camera.position.z = 10;
 
 			function animate() {
@@ -65,6 +78,16 @@
 
 				box.rotation.x += 0.01;
 				box.rotation.y += 0.01;
+
+				cylinder.position.y = 4
+
+				cylinder.rotation.x += 0.01
+				cylinder.rotation.y += 0.01
+
+				sphere.position.y = -4
+
+				sphere.rotation.x += 0.01
+				sphere.rotation.y += 0.01
 
 				renderer.render( scene, camera ); // kind like the update
 
