@@ -35,7 +35,7 @@
 			
 			var geometry1 = new THREE.ConeGeometry( 1, 3, 6 );
 			var edges1 = new THREE.EdgesGeometry( geometry1 );
-			var cone = new THREE.LineSegments( edges1, new THREE.LineBasicMaterial( { color: Math.random() * 0xffffff} ) );
+			var cone = new THREE.LineSegments( edges1, new THREE.LineBasicMaterial( { color: Math.random() * 0xffffff} ) );// random color
 			scene.add( cone );
 
 
@@ -49,15 +49,36 @@
 
 			var geometry3 = new THREE.CylinderBufferGeometry( 1, 1, 4, 6 );
 			var edges3 = new THREE.EdgesGeometry( geometry3 );
-			var cylinder = new THREE.LineSegments( edges3,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );
+			var cylinder = new THREE.LineSegments( edges3,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
 		
 			scene.add( cylinder );
 
 
 			var geometry4 = new THREE.SphereGeometry( 1, 32, 22 );
 			var edges4 = new THREE.EdgesGeometry( geometry4 );
-			var sphere = new THREE.LineSegments( edges4,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );
+			var sphere = new THREE.LineSegments( edges4,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
+
 			scene.add( sphere );
+
+			var geometry5 = new THREE.IcosahedronGeometry(1);
+			var edges5 = new THREE.EdgesGeometry( geometry5 );
+			var icosahedron = new THREE.LineSegments( edges5 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
+
+			scene.add( icosahedron );
+
+
+			var geometry6 = new THREE.DodecahedronGeometry(1);
+			var edges6 = new THREE.EdgesGeometry( geometry6 );
+			var dodecahedron = new THREE.LineSegments( edges6 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
+
+			scene.add( dodecahedron );
+
+			var geometry7 = new THREE.TetrahedronGeometry(1);
+			var edges7 = new THREE.EdgesGeometry( geometry7 );
+			var tetrahedron = new THREE.LineSegments( edges7 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
+
+			scene.add( tetrahedron );
+
 					
 			camera.position.z = 10;
 
@@ -69,25 +90,49 @@
 				//cube.rotation.y += 0.01;
 
 				//camera.position.z -= 0.01;
-				cone.position.x = 0
+
+				cone.position.x = 0 // middle object
 
 				cone.rotation.x += 0.01
 				cone.rotation.y += 0.01
 
-				box.position.x = -4
+
+				box.position.x = -4 // left object
 
 				box.rotation.x += 0.01;
 				box.rotation.y += 0.01;
 
-				cylinder.position.y = 4
+
+				cylinder.position.y = 4 // upper objcet
 
 				cylinder.rotation.x += 0.01
 				cylinder.rotation.y += 0.01
 
-				sphere.position.y = -4
+
+				sphere.position.y = -4 // lower object
 
 				sphere.rotation.x += 0.01
 				sphere.rotation.y += 0.01
+
+
+				icosahedron.position.x = 4 // right object
+
+				icosahedron.rotation.x += 0.01
+				icosahedron.rotation.y += 0.01
+
+
+				dodecahedron.position.x = 4 // upper right object
+				dodecahedron.position.y = 4
+
+				dodecahedron.rotation.x += 0.01
+				dodecahedron.rotation.y += 0.01
+
+
+				tetrahedron.position.x = 4 // lower right object
+				tetrahedron.position.y = -4
+
+				tetrahedron.rotation.x += 0.01
+				tetrahedron.rotation.y += 0.01
 
 				renderer.render( scene, camera ); // kind like the update
 
