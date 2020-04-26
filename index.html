@@ -14,6 +14,7 @@
 	</head>
 	<body>
 		<script src="js/three.js"></script>
+		
 		<script>
 			var scene = new THREE.Scene(); // the environment in which an object is
 			
@@ -79,6 +80,20 @@
 
 			scene.add( tetrahedron );
 
+
+			var geometry8 = new THREE.OctahedronGeometry(1);
+			var edges8 = new THREE.EdgesGeometry( geometry8 );
+			var octahedron = new THREE.LineSegments( edges8 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
+
+			scene.add( octahedron );
+
+		
+			var geometry9 = new THREE.TorusGeometry(1, 0.4, 16, 50);
+			var edges9 = new THREE.EdgesGeometry( geometry9 );
+			var torus = new THREE.LineSegments( edges9 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
+
+			scene.add( torus );
+
 					
 			camera.position.z = 10;
 
@@ -133,6 +148,19 @@
 
 				tetrahedron.rotation.x += 0.01
 				tetrahedron.rotation.y += 0.01
+
+
+				octahedron.position.x = -4
+				octahedron.position.y = -4
+
+				octahedron.rotation.x += 0.01
+				octahedron.rotation.y += 0.01
+
+				torus.position.x = -4
+				torus.position.y = 4
+
+				torus.rotation.x += 0.01
+				torus.rotation.y += 0.01
 
 				renderer.render( scene, camera ); // kind like the update
 
