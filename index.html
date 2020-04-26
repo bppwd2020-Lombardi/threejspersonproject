@@ -14,16 +14,21 @@
 	</head>
 	<body>
 		<script src="js/three.js"></script>
-		
+		<script src="js/TrackballControls.js"></script>
 		<script>
+
 			var scene = new THREE.Scene(); // the environment in which an object is
 			
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 													// FOV,    			ASPECT RATIO			,NEAR AND FAR CLIPPING PLAY
+			
 
 			var renderer = new THREE.WebGLRenderer(); 
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
+
+			var controls = new THREE.TrackballControls( camera, renderer.domElement );
+			controls.addEventListener('change', render);
 
 			/*
 			// CUBE 
@@ -97,10 +102,13 @@
 					
 			camera.position.z = 10;
 
+
+
+
 			function animate() {
 
 				requestAnimationFrame( animate );
-
+				controls.update();
 				//cube.rotation.x += 0.01;
 				//cube.rotation.y += 0.01;
 
@@ -164,6 +172,9 @@
 
 				renderer.render( scene, camera ); // kind like the update
 
+			}
+			function render(){
+				renderer.render(scene, camera);
 			}
 			animate();
 
