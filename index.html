@@ -38,13 +38,21 @@
 			var cube = new THREE.Mesh( geometry, material ); // mesh is an object that takes a geometry, and applies a material to it, which can be inserted into the scene
 			scene.add( cube ); // add the cube to the environment
 			*/
-			
+
+			//A skybox is a method of creating backgrounds to make a video game level look bigger than it really is. When a skybox is used, the level is enclosed in a cuboid.
+			var skyboxGeometry = new THREE.CubeGeometry(10000 , 10000 , 10000); 
+			var skyboxMaterials = new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( "skybox.png")} )
+			var skyboxMaterial = new THREE.MeshBasicMaterial( skyboxMaterials );
+			var skybox = new THREE.Mesh( skyboxGeometry, skyboxMaterial);
+			scene.add( skybox ); 
+
+
+
+
 			var geometry1 = new THREE.ConeGeometry( 1, 3, 6 );
 			var edges1 = new THREE.EdgesGeometry( geometry1 );
 			var cone = new THREE.LineSegments( edges1, new THREE.LineBasicMaterial( { color: Math.random() * 0xffffff} ) );// random color
 			scene.add( cone );
-
-
 
 
 			var geometry2 = new THREE.BoxBufferGeometry( 1, 1, 1 );
