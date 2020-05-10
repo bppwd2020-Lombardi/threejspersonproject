@@ -40,70 +40,93 @@
 			*/
 
 			//A skybox is a method of creating backgrounds to make a video game level look bigger than it really is. When a skybox is used, the level is enclosed in a cuboid.
-			var skyboxGeometry = new THREE.CubeGeometry(1000 , 1000 , 1000); 
-			var skyboxMaterials = new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( "images/skybox.png")} )
-			var skyboxMaterial = new THREE.MeshBasicMaterial( skyboxMaterials );
+			var skyboxGeometry = new THREE.CubeGeometry(100 , 100 , 100); 
+			var skyboxMaterials = [
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/front.png"), side: THREE.DoubleSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/back.png"), side: THREE.DoubleSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/up.png"), side: THREE.DoubleSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/down.png"), side: THREE.DoubleSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/right.png"), side: THREE.DoubleSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/left.png"), side: THREE.DoubleSide})
+			];
+			 
+			var skyboxMaterial = new THREE.MeshFaceMaterial( skyboxMaterials );
 			var skybox = new THREE.Mesh( skyboxGeometry, skyboxMaterial);
 			scene.add( skybox ); 
 
 
-
-
-			var geometry1 = new THREE.ConeGeometry( 1, 3, 6 );
-			var edges1 = new THREE.EdgesGeometry( geometry1 );
-			var cone = new THREE.LineSegments( edges1, new THREE.LineBasicMaterial( { color: Math.random() * 0xffffff} ) );// random color
+			var coneGeometry = new THREE.ConeGeometry( 1, 3, 6 );
+			var coneLineEdges = new THREE.EdgesGeometry( coneGeometry );
+			var coneMaterial = new THREE.MeshBasicMaterial(  { color:  Math.random() * 0xffffff});// random color
+			var coneOutline = new THREE.LineSegments( coneLineEdges, new THREE.LineBasicMaterial( { color: 000000} ) );
+			var cone = new THREE.Mesh(coneGeometry, coneMaterial)
 			scene.add( cone );
+			scene.add( coneOutline );
 
 
-			var geometry2 = new THREE.BoxBufferGeometry( 1, 1, 1 );
-			var edges2 = new THREE.EdgesGeometry( geometry2 );
-			var box = new THREE.LineSegments( edges2, new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) ); // random color
-			scene.add( box );
+			var cubeGeometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+			var cubeMaterial = new THREE.MeshBasicMaterial ( { color:  Math.random() * 0xffffff} );// random color
+			var cubeLineEdges = new THREE.EdgesGeometry( cubeGeometry );
+			var cubeOutline= new THREE.LineSegments( cubeLineEdges, new THREE.LineBasicMaterial( {color: 000000} ) ); 
+			var cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
+			scene.add(cube);
+			scene.add( cubeOutline );
 
 
-			var geometry3 = new THREE.CylinderBufferGeometry( 1, 1, 4, 6 );
-			var edges3 = new THREE.EdgesGeometry( geometry3 );
-			var cylinder = new THREE.LineSegments( edges3,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
-		
+			var cylinderGeometry = new THREE.CylinderBufferGeometry( 1, 1, 4, 6 );
+			var cylinderLineEdges = new THREE.EdgesGeometry( cylinderGeometry );
+			var cylinderMaterial = new THREE.MeshBasicMaterial ( { color:  Math.random() * 0xffffff} );// random color
+			var cylinderOutline = new THREE.LineSegments( cylinderLineEdges,new THREE.LineBasicMaterial( { color: 000000} ) );
+			var cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
 			scene.add( cylinder );
+			scene.add( cylinderOutline );
 
 
-			var geometry4 = new THREE.SphereGeometry( 1, 32, 22 );
-			var edges4 = new THREE.EdgesGeometry( geometry4 );
-			var sphere = new THREE.LineSegments( edges4,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
-
+			var sphereGeometry = new THREE.SphereGeometry( 1, 32, 22 );
+			var sphereMaterial = new THREE.MeshBasicMaterial ( { color:  Math.random() * 0xffffff} );// random color
+			var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
 			scene.add( sphere );
 
-			var geometry5 = new THREE.IcosahedronGeometry(1);
-			var edges5 = new THREE.EdgesGeometry( geometry5 );
-			var icosahedron = new THREE.LineSegments( edges5 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
 
+			var icosahedronGeometry = new THREE.IcosahedronGeometry(1);
+			var icosahedronMaterial = new THREE.MeshBasicMaterial ( { color:  Math.random() * 0xffffff} );
+			var icosahedronLineEdges = new THREE.EdgesGeometry( icosahedronGeometry );
+			var icosahedronOutline = new THREE.LineSegments( icosahedronLineEdges ,new THREE.LineBasicMaterial( { color: 000000 } ) );// random color
+			var icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
 			scene.add( icosahedron );
+			scene.add( icosahedronOutline );
 
 
-			var geometry6 = new THREE.DodecahedronGeometry(1);
-			var edges6 = new THREE.EdgesGeometry( geometry6 );
-			var dodecahedron = new THREE.LineSegments( edges6 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
-
+			var dodecahedronGeometry = new THREE.DodecahedronGeometry(1);
+			var dodecahedronMaterial = new THREE.MeshBasicMaterial ( { color:  Math.random() * 0xffffff} );
+			var dodecahedronLineEdges = new THREE.EdgesGeometry( dodecahedronGeometry );
+			var dodecahedronOutline = new THREE.LineSegments( dodecahedronLineEdges ,new THREE.LineBasicMaterial( { color: 000000} ) );// random color
+			var dodecahedron = new THREE.Mesh(dodecahedronGeometry, dodecahedronMaterial);
 			scene.add( dodecahedron );
+			scene.add( dodecahedronOutline );
 
-			var geometry7 = new THREE.TetrahedronGeometry(1);
-			var edges7 = new THREE.EdgesGeometry( geometry7 );
-			var tetrahedron = new THREE.LineSegments( edges7 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
 
+			var tetrahedronGeometry = new THREE.TetrahedronGeometry(1);
+			var tetrahedronMaterial = new THREE.MeshBasicMaterial ( { color:  Math.random() * 0xffffff} );
+			var tetrahedronLineEdges = new THREE.EdgesGeometry( tetrahedronGeometry );
+			var tetrahedronOutline = new THREE.LineSegments( tetrahedronLineEdges ,new THREE.LineBasicMaterial( { color: 000000} ) );// random color
+			var tetrahedron = new THREE.Mesh(tetrahedronGeometry, tetrahedronMaterial);
 			scene.add( tetrahedron );
+			scene.add( tetrahedronOutline );
 
 
-			var geometry8 = new THREE.OctahedronGeometry(1);
-			var edges8 = new THREE.EdgesGeometry( geometry8 );
-			var octahedron = new THREE.LineSegments( edges8 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
-
+			var octahedronGeometry = new THREE.OctahedronGeometry(1);
+			var octahedronMaterial = new THREE.MeshBasicMaterial ( { color:  Math.random() * 0xffffff} );
+			var octahedronLineEdges = new THREE.EdgesGeometry( octahedronGeometry );
+			var octahedronOutline = new THREE.LineSegments( octahedronLineEdges ,new THREE.LineBasicMaterial( { color: 000000} ) );// random color
+			var octahedron = new THREE.Mesh(octahedronGeometry, octahedronMaterial)
 			scene.add( octahedron );
+			scene.add( octahedronOutline );
 
 		
-			var geometry9 = new THREE.TorusGeometry(1, 0.4, 16, 50);
-			var edges9 = new THREE.EdgesGeometry( geometry9 );
-			var torus = new THREE.LineSegments( edges9 ,new THREE.LineBasicMaterial( { color:  Math.random() * 0xffffff} ) );// random color
+			var torusGeometry = new THREE.TorusGeometry(1, 0.4, 16, 50);
+			var torusMaterial = new THREE.MeshBasicMaterial ( { color:  Math.random() * 0xffffff} );
+			var torus = new THREE.Mesh(torusGeometry, torusMaterial)
 
 			scene.add( torus );
 
@@ -122,22 +145,31 @@
 
 				//camera.position.z -= 0.01;
 
+				coneOutline.position.x = 0 // middle object
 				cone.position.x = 0 // middle object
 
+				coneOutline.rotation.x += 0.01
+				coneOutline.rotation.y += 0.01
 				cone.rotation.x += 0.01
 				cone.rotation.y += 0.01
 
 
-				box.position.x = -4 // left object
+				cube.position.x = -4
+				cubeOutline.position.x = -4 // left object
 
-				box.rotation.x += 0.01;
-				box.rotation.y += 0.01;
+				cube.rotation.x += 0.01;
+				cube.rotation.y += 0.01;
+				cubeOutline.rotation.x += 0.01;
+				cubeOutline.rotation.y += 0.01;
 
 
-				cylinder.position.y = 4 // upper objcet
+				cylinder.position.y = 4 
+				cylinderOutline.position.y = 4// upper objcet
 
 				cylinder.rotation.x += 0.01
 				cylinder.rotation.y += 0.01
+				cylinderOutline.rotation.x += 0.01
+				cylinderOutline.rotation.y += 0.01
 
 
 				sphere.position.y = -4 // lower object
@@ -147,30 +179,46 @@
 
 
 				icosahedron.position.x = 4 // right object
+				icosahedronOutline.position.x = 4
+
 
 				icosahedron.rotation.x += 0.01
 				icosahedron.rotation.y += 0.01
+				icosahedronOutline.rotation.x += 0.01
+				icosahedronOutline.rotation.y += 0.01
 
 
 				dodecahedron.position.x = 4 // upper right object
 				dodecahedron.position.y = 4
+				dodecahedronOutline.position.x = 4 
+				dodecahedronOutline.position.y = 4
 
 				dodecahedron.rotation.x += 0.01
 				dodecahedron.rotation.y += 0.01
+				dodecahedronOutline.rotation.x += 0.01
+				dodecahedronOutline.rotation.y += 0.01
 
 
 				tetrahedron.position.x = 4 // lower right object
 				tetrahedron.position.y = -4
+				tetrahedronOutline.position.x = 4
+				tetrahedronOutline.position.y = -4
 
 				tetrahedron.rotation.x += 0.01
 				tetrahedron.rotation.y += 0.01
+				tetrahedronOutline.rotation.x += 0.01
+				tetrahedronOutline.rotation.y += 0.01
 
 
 				octahedron.position.x = -4
 				octahedron.position.y = -4
+				octahedronOutline.position.x = -4
+				octahedronOutline.position.y = -4
 
 				octahedron.rotation.x += 0.01
 				octahedron.rotation.y += 0.01
+				octahedronOutline.rotation.x += 0.01
+				octahedronOutline.rotation.y += 0.01
 
 				torus.position.x = -4
 				torus.position.y = 4
