@@ -14,6 +14,14 @@ app.get('/index.html',function(req,res){
 app.get('/js/three.js',function(req,res){
     res.sendFile(path.join(__dirname + '/js/three.js')); 
 });
+app.get('/js/dat.gui.js',function(req,res){
+    res.sendFile(path.join(__dirname + '/js/dat.gui.js')); 
+});
+
+app.get('/js/dat.gui.min.js',function(req,res){
+    res.sendFile(path.join(__dirname + '/js/dat.gui.min.js')); 
+});
+
 
 app.get('/js/TrackballControls.js',function(req,res){
     res.sendFile(path.join(__dirname + '/js/TrackballControls.js')); 
