@@ -40,8 +40,8 @@
 			*/
 
 			//A skybox is a method of creating backgrounds to make a video game level look bigger than it really is. When a skybox is used, the level is enclosed in a cuboid.
-			var skyboxGeometry = new THREE.CubeGeometry(10000 , 10000 , 10000); 
-			var skyboxMaterials = new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( "skybox.png")} )
+			var skyboxGeometry = new THREE.CubeGeometry(1000 , 1000 , 1000); 
+			var skyboxMaterials = new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( "images/skybox.png")} )
 			var skyboxMaterial = new THREE.MeshBasicMaterial( skyboxMaterials );
 			var skybox = new THREE.Mesh( skyboxGeometry, skyboxMaterial);
 			scene.add( skybox ); 
