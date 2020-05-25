@@ -164,13 +164,13 @@
 				} else {
 					renderer.render( scene, camera );
 				}
-				
+				scene.simulate();
 			}
 			function render(){
 				renderer.render(scene, camera);
 			}
 			animate();
-			scene.simulate();
+			
 			
 		</script>
 	</body>
