@@ -71,8 +71,22 @@
 			scene.add( skybox ); 
 
 
-			
+			var jengapieceGeometry = new THREE.CubeGeometry(7.5, 1.0, 2.3);
+			var jengapieceMaterials = [
 
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengaleft.jpeg"), side: THREE.FrontSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengaright.jpeg"), side: THREE.FrontSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengaup.jpeg"), side: THREE.FrontSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengadown.jpeg"), side: THREE.FrontSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengaback.jpeg"), side: THREE.FrontSide} ),
+				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengafront.jpeg"), side: THREE.FrontSide})
+
+
+
+			]
+			var jengapieceMaterial = new THREE.MeshFaceMaterial( jengapieceMaterials );	
+			var jengapiece = new THREE.Mesh(jengapieceGeometry, jengapieceMaterial);
+			scene.add( jengapiece );
 					
 			camera.position.z = 10;
 
