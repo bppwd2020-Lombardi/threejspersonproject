@@ -6,6 +6,7 @@ app.use(express.static('public')); // enables access to the public folder which 
 
 // Express Middleware for serving static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'js')));
 
 app.get('/index.html',function(req,res){
    res.sendFile(path.join(__dirname + '/index.html')); 

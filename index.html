@@ -16,6 +16,7 @@
 		<script src="js/three.js"></script>
 		<script src="js/TrackballControls.js"></script>
 		<script src="js/dat.gui.js"></script>
+		<script src="js/physi.js"></script>
 		<script type="text/javascript">
     //////////////////////////////////////////////////////
 			var Menu = function() {
@@ -38,6 +39,9 @@
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 													// FOV,    			ASPECT RATIO			,NEAR AND FAR CLIPPING PLAY
 			
+			///physics setup ///
+			Physijs.scripts.worker = 'js/physijs_worker.js';
+			Physijs.scripts.ammo = 'js/ammo.js';
 
 			var renderer = new THREE.WebGLRenderer(); 
 			renderer.setSize( window.innerWidth, window.innerHeight );
@@ -71,7 +75,7 @@
 			scene.add( skybox ); 
 
 
-			var jengapieceGeometry = new THREE.CubeGeometry(7.5, 1.0, 2.3);
+			var jengapieceGeometry = new THREE.CubeGeometry(7.5, 1.0, 2.3); // Length, height, width
 			var jengapieceMaterials = [
 
 				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengaleft.jpeg"), side: THREE.FrontSide} ),
@@ -80,8 +84,6 @@
 				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengadown.jpeg"), side: THREE.FrontSide} ),
 				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengaback.jpeg"), side: THREE.FrontSide} ),
 				new THREE.MeshBasicMaterial( { map : new THREE.TextureLoader( ).load( "images/jengafront.jpeg"), side: THREE.FrontSide})
-
-
 
 			]
 			var jengapieceMaterial = new THREE.MeshFaceMaterial( jengapieceMaterials );	
