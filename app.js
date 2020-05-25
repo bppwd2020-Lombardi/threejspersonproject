@@ -6,7 +6,6 @@ app.use(express.static('public')); // enables access to the public folder which 
 
 // Express Middleware for serving static files
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'js')));
 
 app.get('/index.html',function(req,res){
    res.sendFile(path.join(__dirname + '/index.html')); 
@@ -27,6 +26,20 @@ app.get('/js/dat.gui.min.js',function(req,res){
 app.get('/js/TrackballControls.js',function(req,res){
     res.sendFile(path.join(__dirname + '/js/TrackballControls.js')); 
 });
+
+app.get('/ammo.js',function(req,res){
+    res.sendFile(path.join(__dirname + '/ammo.js')); 
+});
+
+app.get('/js/physi.js',function(req,res){
+    res.sendFile(path.join(__dirname + '/js/physi.js')); 
+});
+
+app.get('/js/physijs_worker.js',function(req,res){
+    res.sendFile(path.join(__dirname + '/js/physijs_worker.js')); 
+});
+
+
 
 
 app.get('/', function(req, res) {
